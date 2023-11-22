@@ -3,6 +3,26 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 import { CiSearch } from "react-icons/ci";
+import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import ToastButton from '@/components/dashboard/ToastButton';
 
 const ManageUserpage = () => {
   return (
@@ -15,9 +35,65 @@ const ManageUserpage = () => {
             <CiSearch />
             <input type="text" placeholder="搜索文章..." className=" border-none outline-none text-lg font-medium " />
           </div>
-          <button className='py-1 px-2 bg-purple-500 rounded-md '>
-            添加用户
-          </button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline">添加用户</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>添加用户</DialogTitle>
+                <DialogDescription>
+                  按照提示填写信息
+                </DialogDescription>
+              </DialogHeader>
+              <div className="grid gap-4 py-4">
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="name" className="text-right">
+                    昵称
+                  </Label>
+                  <Input id="name" placeholder='小明' className="col-span-3" />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="username" className="text-right">
+                    电子邮件
+                  </Label>
+                  <Input id="username" placeholder='100000@qq.com' className="col-span-3" />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="username" className="text-right">
+                    用户角色
+                  </Label>
+                  <Select>
+                    <SelectTrigger className="col-span-3">
+                      <SelectValue placeholder="普通用户" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="light">普通用户</SelectItem>
+                      <SelectItem value="dark">超级用户</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="username" className="text-right">
+                    用户状态
+                  </Label>
+                  <Select>
+                    <SelectTrigger className="col-span-3">
+                      <SelectValue placeholder="激活" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="light">激活</SelectItem>
+                      <SelectItem value="dark">禁止</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+              </div>
+              <DialogFooter>
+                <Button type="submit">保存</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
         {/* 展示栏 */}
         <table className='w-full'>
@@ -59,23 +135,77 @@ const ManageUserpage = () => {
               </td>
               <td className='p-2'>
                 <div className='flex gap-x-2'>
-                  <Link href={`/dashboard/users/`} className='bg-green-200 p-2 rounded-md'>
-                    编辑
-                  </Link>
-                  <Link href={`/dashboard/users/`} className='bg-red-200 p-2 rounded-md'>
-                    删除
-                  </Link>
-              </div>
-            </td>
-          </tr>
-        </tbody>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button variant="outline">编辑</Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                      <DialogHeader>
+                        <DialogTitle>编辑用户资料</DialogTitle>
+                        <DialogDescription>
+                          修改完点击保存
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="grid gap-4 py-4">
+                        <div className="grid grid-cols-4 items-center gap-4">
+                          <Label htmlFor="name" className="text-right">
+                            昵称
+                          </Label>
+                          <Input id="name" placeholder='小明' className="col-span-3" />
+                        </div>
+                        <div className="grid grid-cols-4 items-center gap-4">
+                          <Label htmlFor="username" className="text-right">
+                            电子邮件
+                          </Label>
+                          <Input id="username" placeholder='100000@qq.com' className="col-span-3" />
+                        </div>
+                        <div className="grid grid-cols-4 items-center gap-4">
+                          <Label htmlFor="username" className="text-right">
+                            用户角色
+                          </Label>
+                          <Select>
+                            <SelectTrigger className="col-span-3">
+                              <SelectValue placeholder="普通用户" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="light">普通用户</SelectItem>
+                              <SelectItem value="dark">超级用户</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        <div className="grid grid-cols-4 items-center gap-4">
+                          <Label htmlFor="username" className="text-right">
+                            用户状态
+                          </Label>
+                          <Select>
+                            <SelectTrigger className="col-span-3">
+                              <SelectValue placeholder="激活" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="light">激活</SelectItem>
+                              <SelectItem value="dark">禁止</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
 
-      </table>
+                      </div>
+                      <DialogFooter>
+                        <ToastButton msg='保存' />
+                      </DialogFooter>
+                    </DialogContent>
+                  </Dialog>
+                  <ToastButton msg='删除' />
+                </div>
+              </td>
+            </tr>
+          </tbody>
 
-      {/* 换页栏 */}
-      <div></div>
+        </table>
 
-    </div >
+        {/* 换页栏 */}
+        <div></div>
+
+      </div >
     </>
   )
 }

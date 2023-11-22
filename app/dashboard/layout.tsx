@@ -8,10 +8,10 @@ import { RxDashboard } from "react-icons/rx";
 import { RxText } from "react-icons/rx";
 import { PiChatCircleTextLight } from "react-icons/pi";
 import { FiUsers } from "react-icons/fi";
-import { IoCloudUploadOutline } from "react-icons/io5";
+import { IoCloudUploadOutline,IoBanOutline } from "react-icons/io5";
 import { CiSettings } from "react-icons/ci";
 import { GoSignOut } from "react-icons/go";
-import { IoIosHelpCircleOutline } from "react-icons/io";
+import { IoIosHelpCircleOutline, } from "react-icons/io";
 const DashBoardLayout = ({ children }: { children: React.ReactNode }) => {
     const path = usePathname()
 
@@ -40,6 +40,11 @@ const DashBoardLayout = ({ children }: { children: React.ReactNode }) => {
             title: '上传图片',
             link: '/dashboard/upload',
             icon: <IoCloudUploadOutline size={20} />
+        },
+        {
+            title: '黑名单',
+            link: '/dashboard/blackList',
+            icon: <IoBanOutline  size={20} />
         },
         {
             title: '设置',
