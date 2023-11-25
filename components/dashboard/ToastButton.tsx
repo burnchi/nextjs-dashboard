@@ -2,18 +2,28 @@
 import { useToast } from "@/components/ui/use-toast"
 import { Button } from "../ui/button"
 
-const ToastButton = ({msg}:{msg:string}) => {
+const ToastButton = ({msg,user}:
+  {
+    msg:string,
+    user:any
+  }
+  ) => {
     const { toast } = useToast()
+    console.log(user);
+    
+    
   return (
     <Button
       onClick={() => {
         toast({
           title: "Scheduled: Catch up",
-          description: "Friday, February 10, 2023 at 5:57 PM",
+          description: `${user}`,
+
         })
       }}
     >
       {msg}
+      
     </Button>
   )
 }

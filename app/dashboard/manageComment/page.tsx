@@ -24,10 +24,9 @@ const ManageCommentpage = () => {
           <thead className=''>
             <tr>
               <td className='p-2'>昵称</td>
+              <td className='p-2'>文章</td>
               <td className='p-2'>留言</td>
-              <td className='p-2'>创建日期</td>
-              <td className='p-2'>角色</td>
-              <td className='p-2'>状态</td>
+              <td className='p-2'>留言日期</td>
               <td className='p-2'></td>
             </tr>
           </thead>
@@ -46,21 +45,18 @@ const ManageCommentpage = () => {
                 </div>
               </td>
               <td className='p-2'>
+                post 1
+              </td>
+              <td className='p-2'>
                 Hello
               </td>
               <td className='p-2'>
                 2022-10-1
               </td>
               <td className='p-2'>
-                普通用户
-              </td>
-              <td className='p-2'>
-                激活
-              </td>
-              <td className='p-2'>
                 <div className='flex gap-x-2'>
                   <Link href={`/dashboard/users/`} className='bg-green-200 p-2 rounded-md'>
-                    通过
+                    查看
                   </Link>
                   <Link href={`/dashboard/users/`} className='bg-red-200 p-2 rounded-md'>
                     删除

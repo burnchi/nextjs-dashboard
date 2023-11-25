@@ -10,8 +10,29 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Todo {
-    id Int @id @default(autoincrement())
-    title String
-    completed Boolean @default(false)
+// 表结构
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  createdAt DateTime @default(now())
+  role      String   @default("user")
+  active    Boolean  @default(true)
+}
+
+model Post {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  author      String
+  authorEmail String?
+  createdAt   DateTime @default(now())
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  text      String
+  createdAt DateTime @default(now())
+  postName  String?
+  Post      String?
 }

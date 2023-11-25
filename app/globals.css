@@ -74,3 +74,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+option {
+  /* 添加样式，这里只是一个示例，你可以根据需求修改样式 */
+  font-size: large;
+}
+
